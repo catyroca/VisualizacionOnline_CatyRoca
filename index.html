@@ -1,0 +1,288 @@
+<!DOCTYPE html> <!--etiqueta que define el tipo de archivo: html-->
+
+<html> <!--etiqueta que define el inicio del doc html; indica que todo lo que viene a continuación debe tratarlo como una serie de códigos html-->
+
+  <head> <!--etiqueta que define la cabecera del doc html; suele contener info sobre el doc que no se muestra directamente en el navegador-->
+    <!--etiquetas dentro de la etiqueta head:-->
+    <meta content= "text/html"; charset= "UTF-8"; http-equiv= "content-type"/> <!--etiqueta que proporciona metadatos sobre el doc html; suelen utilizarse para especificar la descripción de la pág; no se muestran en la pág, pero son utilizados por los navegadores/motores de búsqueda/otros servicios web para saber cómo mostrar el contenido de la pág-->
+    <meta charset= "utf-8">
+    <meta http-equiv= "X-UA-Compatible" content= "IE=edge">
+    <meta name= "viewport" content= "initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name= "mobile-web-app-capable" content= "yes">
+    <meta name= "apple-mobile-web-app-capable" content= "yes">
+    <!--etiqueta que define el título de la pág:-->
+    <title> Caty Roca: Visualización Online
+    </title> <!--etiqueta que cierra el título de la pág-->
+    <!--etiqueta para enlazar a código CSS de Leaflet; siempre en la cabecera:-->
+    <link rel= "stylesheet" href= "https://unpkg.com/leaflet@1.5.0/dist/leaflet.css"
+    integrity= "sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin= ""/>
+    <!--etiqueta para enlazar a código JS de Leaflet; siempre en la cabecera; indicar tras el código CSS de Leaflet:-->
+    <script src= "https://unpkg.com/leaflet@1.5.0/dist/leaflet.js"
+    integrity= "sha512-3Wcxp7F9bV2pl+MBgrL6Pz7AJASLpemmQPIiPA0lDs3ImF0z4JuuMIBPeirLbgIuhfH2gJyGWZjvm6M+Zr7L6Q=="
+    crossorigin= "">
+    </script> <!--etiqueta que cierra el script JS-->
+    <!--etiquetas para enlazar a códigos CSS y JS de Leaflet para visor cartográfico temático:-->
+    <link rel= "stylesheet" href= "./css/L.Control.Locate.min.css"> <!--etiqueta para enlazar a código CSS de Leaflet para posicionamiento-->
+    <script src= "./js/L.Control.Locate.min.js"></script> <!--etiqueta para enlazar a código JS de Leaflet para posicionamiento-->
+    <link rel= "stylesheet" href= "./css/fontawesome-all.min.css"> <!--etiqueta para enlazar a código CSS de Leaflet para apariencia iconos-->
+    <link rel= "stylesheet" href= "./css/leaflet-control-geocoder.Geocoder.css"> <!--etiqueta para enlazar a código CSS de Leaflet para buscador-->
+    <script src= "./js/leaflet-control-geocoder.Geocoder.js"></script> <!--etiqueta para enlazar a código JS de Leaflet para buscador-->
+    <link rel= "stylesheet" href= "./css/leaflet-measure.css"> <!--etiqueta para enlazar a código CSS de Leaflet para medir distancias y áreas-->
+    <script src= "./js/leaflet-measure.js"></script> <!--etiqueta para enlazar a código JS de Leaflet para medir distancias y áreas-->
+    <script src= "./js/Autolinker.min.js"></script> <!--etiqueta para enlazar a código JS de Leaflet para linkar elementos que aparecerán en el mapa-->
+    <script src= "./data/ifn_sariena_web_1.js"></script> <!--etiqueta para enlazar a código JS de Leaflet para capa IFN Sariñena-->
+    <!--estilo aplicado en la cabecera al bloque visor cartográfico temático:-->
+      <style>
+        html, body, #bloque_visortematico {width: 100%; height: 100%; padding: 0; margin: 0;}
+      </style>
+  </head> <!--etiqueta que cierra la cabecera del doc html-->
+
+
+  <body> <!--etiqueta que define el contenido principal o cuerpo del doc html; es la parte que se muestra en el navegador; dentro de esta etiqueta pueden definirse propiedades comunes a toda la pág (color de fondo, márgenes, ...) y numerosas etiquetas-->
+    <!--etiquetas dentro de la etiqueta body = algunos ejemplos que se pueden encontrar a lo largo del código (se comentarán en su correspondiente línea):
+    h1, h2, h3, p, p1, p2, br, span, style, div, img, script-->
+
+    <h1> <!--etiqueta encabezado 1-->
+      MÁSTER EN TECNOLOGÍAS DE LA INFORMACIÓN GEOGRÁFICA PARA LA ORDENACIÓN DEL TERRITORIO:
+      <br> <!--salto de línea forzado-->
+      SISTEMAS DE INFORMACIÓN GEOGRÁFICA Y TELEDETECCIÓN
+      <div style= "text-align: center;"> <!--etiqueta incluida en el código del html para definir estilo a la imagen:-->
+        <img src= "./logouz.png"; width= 275; height= 100;>
+          <!--<img src= ...> indica la existencia de una imagen para mostrarse en el navegador; indicar la ruta relativa; se le puede definir un tamaño; no es necesario cerrar la etiqueta-->
+      </div> <!--cierra etiqueta-->
+    </h1> <!--cierra etiqueta-->
+    <h3> <!--etiqueta encabezado 3-->
+      VISUALIZACIÓN, PRESENTACIÓN Y DIFUSIÓN DE LA INFORMACIÓN GEOGRÁFICA
+      <br>
+      Bloque Herramientas para visualizar y compartir información espacial online
+    </h3> <!--cierra etiqueta-->
+    <h4> <!--etiqueta encabezado 4-->
+      Caty Roca Fernández
+    </h4> <!--cierra etiqueta-->
+    <br>
+    <h5> <!--etiqueta encabezado 5-->
+      Creación de una página web sencilla con el editor de código abierto ATOM:
+      <br>
+      <span style= "margin-left: 50px;"> <!--etiqueta incluida en el código del html para definir estilo únicamente a la línea siguiente dentro de la etiqueta p:-->
+        1) Resumen profesional;
+        <br>
+      <span style= "margin-left: 50px;">
+        2) Visor cartográfico sencillo;
+        <br>
+      <span style= "margin-left: 50px;">
+        3) Visor cartográfico temático.
+      </span> <!--cierra etiqueta-->
+    </h5> <!--cierra etiqueta-->
+
+
+    <style> /*sintaxis de sistema de estilos en cascada CSS aplicada como atributo style del html, que controla cómo se muestran los elementos; dentro del mismo atributo style permite concentrar el estilo para múltiples etiquetas:*/
+      body {background-color: lightblue;} /*estilo para la etiqueta body*/
+      h1 {color: purple; text-align: center; font-family: Tw Cen Mt; font-size: 30px; font-weight: bold; margin: 25px; padding-top: 50px; padding-bottom: 25px;} /*estilo para la etiqueta h1*/
+      h3 {color: blue; text-align: justify; font-family: Tw Cen Mt; font-size: 25px; font-weight: bold; margin-left: 275px;} /*estilo para la etiqueta h3*/
+      h4 {text-align: right; font-family: Tw Cen Mt; font-size: 23px; font-weight: bold; margin-right: 275px;} /*estilo para la etiqueta h4*/
+      h5 {color: white; text-align: justify; font-family: Futura; font-size: 18px; font-weight: normal; width: 35.5em; background-color: blue; margin-left: 50px; padding: 25px;} /*estilo para la etiqueta h5*/
+      /*a través del lenguaje CSS crear clases de estilos, que luego se aplicarán a las etiquetas del html:*/
+      .estilotitulos {color: rgb(40,40,40); text-align: justify; font-family: Futura; font-size: 18px; background-color: rgb(190,190,190); margin: 50px; padding: 25px;}
+      .estilocontenido {color: brown; text-align: justify; font-family: Tw Cen Mt; font-size: 18px; background-color: white; margin: 10px; margin-left: 25px; margin-right: 25px; margin-top: 20px; padding: 10px; border-left-style: solid; border-left-width: 8px;}
+      .estilolinks {color: blue; text-align: right; font-size: 16px; line-height: 1.4em;}
+      .estilomapa {margin-bottom: 5px; box-shadow: 5px 5px 5px #888;}
+      .estilomodific {color: black; text-align: right; font-size: 12px;}
+    </style> <!--cierra etiqueta-->
+
+
+    <!--aplicar las clases de estilos CSS creadas anteriormente; además, diseñar por bloques <div ...> para organizar conjuntos de elementos en un espacio determinado:-->
+    <div class= "estilotitulos"> <!--etiqueta para definir el estilo CSS del bloque:-->
+      <p1>1) Resumen profesional</p1> <!--etiqueta párrafo 1 y cierra etiqueta-->
+        <div class= "estilocontenido"> <!--etiqueta para definir el estilo CSS del bloque interior; además, aplicar etiquetas incluidas en el código del html para definir estilos únicamente a las líneas siguientes dentro de la etiqueta p2:-->
+          <p2><span style= "color: rgb(75,75,75); font-size: 19px;"><b><center>Geógrafa | Máster en Tecnologías de la Información Geográfica para la Ordenación del Territorio: Sistemas de Información Geográfica y Teledetección</center></b></span>
+            <br><br><span style= "margin: 30px;"><u>Formación académica:</u></span>
+              <ul><ul><ul><li>2017 - 2019. <span style= "background-color: rgb(255,235,125);"><b>Máster Oficial</b></span> en Tecnologías de la Información Geográfica para la Ordenación del Territorio: SIG y TDT por la Universidad de Zaragoza</li></ul></ul></ul>
+              <ul><ul><ul><li>2013 - 2017. <span style= "background-color: rgb(255,235,125);"><b>Grado en Geografía</b></span> por la Universidad de Barcelona</li></ul></ul></ul>
+            <br><span style= "margin: 30px;"><u>Experiencia profesional:</u></span>
+              <ul><ul><ul><li>2018 - 2019. <span style= "background-color: rgb(255,235,125);"><b>Instituto Pirenaico de Ecología</b></span> (Departamento de Procesos Geoambientales y Cambio Global) - Centro Superior de Investigaciones Científicas:
+                <br><span style= "margin: 103px; line-height: 2em;">- Beca JAE Intro 2018 de introducción a la investigación para estudiantes universitarios, formación de personal investigador
+                <br><span style= "margin: 103px;">- Grupo de investigación Hidrología ambiental e interacciones con el clima y las actividades humanas</span></li></ul></ul></ul>
+              <ul><ul><ul><li>2016 - 2017. <span style= "background-color: rgb(255,235,125);"><b>Área Metropolitana de Barcelona</b></span> (Sección de Estudios Territoriales, Departamento de Urbanismo):
+                <br><span style= "margin: 103px; line-height: 2em;">- Digitalización de los usos del suelo del área metropolitana de Barcelona
+                <br><span style= "margin: 103px;">- Revisión de los tejidos residenciales
+                <br><span style= "margin: 103px;">- Geocodificación de direcciones postales</span></li></ul></ul></ul>
+            <br><div class= "estilolinks"> <!--etiqueta para definir el estilo CSS del bloque interior-interior:-->
+              <i><a href= "https://fyl.unizar.es/master/master-en-tigs#overlay-context=master/master-en-tigs">Universidad de Zaragoza</a> | <a href= "https://www.ub.edu/web/ub/es/universitat/campus_fac_dep/facultats_escoles/facultat_geografia/facultat_geografia.html">Universidad de Barcelona</a>
+              <br><a href= "http://www.csic.es/centros-de-investigacion1/-/centro/216?_centres_WAR_centresportlet_gsa_index=false">Instituto Pirenaico de Ecología</a> | <a href= "http://www.amb.cat/s/es/web/territori/urbanisme/estudis-territorials.html">Área Metropolitana de Barcelona</a></i>
+                <!--<a href= ...> indica la existencia de un hipervínculo o enlace para mostrarse en el navegador; </a> cierra etiqueta-->
+            </div> <!--cierra etiqueta bloque interior-interior-->
+          </p2> <!--cierra etiqueta párrafo 2-->
+        </div> <!--cierra etiqueta bloque interior-->
+    </div> <!--cierra etiqueta bloque-->
+    <div class= "estilotitulos">
+      <p3>2) Visor cartográfico sencillo</p3>
+        <div class= "estilocontenido">
+          <p4><span style= "color: rgb(75,75,75); font-size: 19px;"><b><center>Trabajando con LEAFLET</center></b></span>
+            <div class= "estilomapa"> <!--etiqueta para definir el estilo CSS del bloque interior-interior:-->
+              <br><br><center><div id= "bloque_visorsencillo" style= "width: 800px; height: 600px;"></div></center> <!--bloque donde aparecerá el mapa dentro del cuerpo de la pág con estilo determinado y cierra etiquetas-->
+            </div> <!--cierra etiqueta bloque interior-interior-->
+              <script> //script JS de Leaflet que define las características/elementos del bloque_visorsencillo (mapa); indicar tras el código CSS de Leaflet del bloque:
+                var mapa_sencillo= L.map('bloque_visorsencillo').setView([40, -2], 5); //definir el mapa como una variable y ajustarlo donde se quiera visualizar
+                //añadir variable capa de fondo (TMS); indicar dirección de las tiles; aplicar propiedades; indicar líneas de atribución; añadir a la variable mapa_sencillo:
+                  var mapa_fondo= L.tileLayer(
+                    'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+                    {maxZoom: 10,
+                    attribution: '2019 Caty Roca - Ejercicio Visualización Online - UNIZAR &copy; <a href= "https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' + '<a href= "https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                    id: 'mapbox.streets'
+                    }).addTo(mapa_sencillo);
+                //añadir variable marcador en unas coordenadas determinadas; añadir a la variable mapa_sencillo:
+                  var marker= L.marker([40.41, -3.7]).addTo(mapa_sencillo);
+                    marker.bindPopup('Madrid: lat 40.41 | lon -3.7').addTo(mapa_sencillo); //mostrar un popup con info del marcador; añadir a la variable mapa_sencillo
+                //añadir variable círculo en unas coordenadas determinadas; definir estilo; añadir a la variable mapa_sencillo:
+                  var circleBCN= L.circle([41.39, 2.17], {color: 'rgb(155,50,75)', fillColor: 'white', fillOpacity: 0.3, radius: 85000}).addTo(mapa_sencillo);
+                  var circleMAD= L.circle([40.41, -3.7], {color: 'rgb(155,50,75)', fillColor: 'white', fillOpacity: 0.3, radius: 85000}).addTo(mapa_sencillo);
+                  var circleZGZA= L.circle([41.65, -0.89], {color: 'rgb(155,50,75)', fillColor: 'white', fillOpacity: 0.3, radius: 50000}).addTo(mapa_sencillo);
+                  var circleVAL= L.circle([39.47, -0.37], {color: 'rgb(155,50,75)', fillColor: 'white', fillOpacity: 0.3, radius: 50000}).addTo(mapa_sencillo);
+                  var circleSEV= L.circle([37.39, -5.98], {color: 'rgb(155,50,75)', fillColor: 'white', fillOpacity: 0.3, radius: 50000}).addTo(mapa_sencillo);
+                  var circleSS= L.circle([43.31, -1.98], {color: 'rgb(155,50,75)', fillColor: 'white', fillOpacity: 0.3, radius: 50000}).addTo(mapa_sencillo);
+                  var circleSC= L.circle([42.88, -8.54], {color: 'rgb(155,50,75)', fillColor: 'white', fillOpacity: 0.3, radius: 25000}).addTo(mapa_sencillo);
+                  var circleSAL= L.circle([40.97, -5.66], {color: 'rgb(155,50,75)', fillColor: 'white', fillOpacity: 0.3, radius: 20000}).addTo(mapa_sencillo);
+                //añadir variable capa TMS; añadir a la variable mapa_sencillo:
+                  var NASAGIBS_ViirsEarthAtNight2012= L.tileLayer(
+                    'https://map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_CityLights_2012/default/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}',
+                    {attribution: 'Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System <a href= "https://earthdata.nasa.gov">(ESDIS)</a> with funding provided by NASA/HQ',
+                    bounds: [[-85.0511287776, -179.999999975], [85.0511287776, 179.999999975]],
+                    minZoom: 1,
+                    maxZoom: 8,
+                    format: 'jpg',
+                    time: '',
+                    tilematrixset: 'GoogleMapsCompatible_Level'
+                    }).addTo(mapa_sencillo);
+                //añadir variables necesarias para control de capas en el visor cartográfico (visualización/selección de capas):
+                  //variable para capas base:
+                    var baseMap= {"OpenStreetMap": mapa_fondo,};
+                  //variable para capas superpuestas:
+                    var overlayMap= {
+                      "Iluminación": NASAGIBS_ViirsEarthAtNight2012,
+                      "Barcelona": circleBCN,
+                      "Madrid": circleMAD,
+                      "San Sebastián": circleSS,
+                      "Sevilla": circleSEV,
+                      "Valencia": circleVAL,
+                      "Zaragoza": circleZGZA,
+                      "Santiago de Compostela": circleSC,
+                      "Salamanca": circleSAL,
+                      };
+                  //variable para control de capas; añadir a la variable mapa_sencillo:
+                    var controlMap= L.control.layers(
+                      baseMap,
+                      overlayMap,
+                      {collapsed: true, //indicar true para que el icono de capas no esté desplegado en el visor cartográfico
+                      }).addTo(mapa_sencillo);
+                //añadir variable escala; añadir a la variable mapa_sencillo:
+                  var escala= L.control.scale({position: "topleft",
+                    imperial: false, //indicar false para que no se muestre la escala en sistema imperial (millas)
+                    }).addTo(mapa_sencillo);
+              </script> <!--cierra etiqueta script JS-->
+          </p4> <!--cierra etiqueta párrafo 4-->
+        </div> <!--cierra etiqueta bloque interior-->
+    </div> <!--cierra etiqueta bloque-->
+    <div class= "estilotitulos">
+      <p5>3) Visor cartográfico temático</p5>
+        <div class= "estilocontenido">
+          <p6><span style= "color: rgb(75,75,75); font-size: 19px;"><b><center>Trabajando con QGIS2WEB - Leaflet</center></b></span>
+            <div class= "estilomapa"> <!--etiqueta para definir el estilo CSS del bloque interior-interior:-->
+              <br><br><center><div id= "bloque_visortematico" style= "width: 800px; height: 600px;"></div></center> <!--bloque donde aparecerá el mapa dentro del cuerpo de la pág con estilo determinado y cierra etiquetas-->
+            </div> <!--cierra etiqueta bloque interior-interior-->
+              <script> //script JS de Leaflet que define las características/elementos del bloque_visortematico (mapa); indicar tras el código CSS de Leaflet del bloque:
+                //definir el mapa como una variable; aplicar propiedades; ajustarlo donde se quiera visualizar:
+                  var map= L.map('bloque_visortematico',
+                    {zoomControl: true, maxZoom: 28, minZoom: 11
+                    }).fitBounds([[41.63262819764932, -0.5789140284945308], [41.90281051694051, 0.24208705277350565]]);
+                //indicar líneas de atribución:
+                  map.attributionControl.addAttribution('2019 Caty Roca - Inventario Forestal Nacional de Sariñena (Huesca) - Ejercicio Visualización Online - UNIZAR &copy; <a href="https://github.com/tomchadwin/qgis2web">QGis2Web</a><br>Imagen de teledetección del satélite Sentinel 2 (verano 2018) del Centro Nacional de Información Geográfica <a href="http://centrodedescargas.cnig.es/CentroDescargas/index.jsp">(CNIG)</a>',);
+                //añadir variables capa de teledetección Sentinel 2:
+                  var bounds= new L.featureGroup; //variable para límites
+                  var img_bounds= [[41.27028300303312, -1.0256579611962087], [42.9884843440343, 0.8979366551604717]]; //variable para imagen límites
+                  var img_sentinel= './data/sentinel.png'; //variable para imagen Sentinel
+                  var overlay_bounds_sentinel= new L.imageOverlay(img_sentinel, img_bounds); //variable para nueva capa superpuesta límites y Sentinel
+                  bounds.addLayer(overlay_bounds_sentinel); //añadir variable límites como capa a la variable capa superpuesta límites y Sentinel
+                  map.addLayer(overlay_bounds_sentinel); //añadir variable map como capa a la variable capa superpuesta límites y Sentinel
+                //añadir variable posicionamiento; añadir a la variable map:
+                  var position= L.control.locate({position: "bottomright"}).addTo(map);
+                //añadir variable medir distancias y áreas; añadir a la variable map:
+                  var measureControl= new L.Control.Measure(
+                    {position: 'topleft',
+                    primaryLengthUnit: 'meters',
+                    secondaryLengthUnit: 'kilometers',
+                    primaryAreaUnit: 'sqmeters',
+                    secondaryAreaUnit: 'hectares'}).addTo(map);
+                    //controles sobre el icono:
+                      document.getElementsByClassName('leaflet-control-measure-toggle')[0].innerHTML = '';
+                      document.getElementsByClassName('leaflet-control-measure-toggle')[0].className += 'fas fa-ruler';
+                //añadir variables y aplicar función a la capa IFN Sariñena para que cuando se sitúe el ratón sobre uno de los polígonos aparezca un popup con info de la tabla de atributos de la capa:
+                  var highlightLayer;
+                    function highlightFeature(e)
+                    {highlightLayer= e.target;
+                    if (e.target.feature.geometry.type === 'LineString') {highlightLayer.setStyle({color: '#ffff00',});
+                    } else {highlightLayer.setStyle({fillColor: '#ffff00', fillOpacity: 1});
+                    } highlightLayer.closePopup();}
+                  var pop_ifn_sariena_web_1;
+                    function pop_ifn_sariena_web_1(feature, layer)
+                    {layer.on({mouseout: function(e)
+                    {for (i in e.target._eventParents) {e.target._eventParents[i].resetStyle(e.target);
+                    } if (typeof layer.closePopup == 'function') {layer.closePopup();
+                    } else {layer.eachLayer(function(feature) {feature.closePopup()});
+                    }}, mouseover: highlightFeature,});
+                  //añadir variable popup con los atributos de la capa que se quieran mostrar; añadir a la misma variable:
+                    var popupIFN= '<table>\
+                      \
+                      \
+                      <tr>\
+                      <td colspan= "2"><strong>ha: </strong><br>' + (feature.properties['ha'] !== null ? Autolinker.link(String(feature.properties['HECTAREAS'])) : '') + '</td>\
+                      </tr>\
+                      \
+                      <tr>\
+                      <td colspan= "2"><strong><br>Especie: </strong><br>' + (feature.properties['Especie'] !== null ? Autolinker.link(String(feature.properties['ESP1_NESP-NOMBRE1'])) : '') + '</td>\
+                      </tr>\
+                      </table>';layer.bindPopup(popupIFN);}
+                //añadir variable y definir estilo a la capa IFN Sariñena; crear mapa:
+                  var style_ifn_sariena_web_1;
+                    function style_ifn_sariena_web_1()
+                    {return {pane: 'pane_ifn_sariena_web_1', color: 'rgb(100,0,100)', weight: 0.6, fill: true, fillColor: 'white', fillOpacity: 0.35,}}
+                  map.createPane('pane_ifn_sariena_web_1');
+                //añadir variables capas:
+                  //variable para nueva capa GeoJson IFN Sariñena:
+                    var layer_ifn_sariena_web_1= new L.geoJson(json_ifn_sariena_web_1,
+                      {pane: 'pane_ifn_sariena_web_1',
+                      onEachFeature: pop_ifn_sariena_web_1,
+                      style: style_ifn_sariena_web_1,});
+                    bounds.addLayer(layer_ifn_sariena_web_1); //añadir variable límites como capa a la variable capa IFN Sariñena
+                    map.addLayer(layer_ifn_sariena_web_1); //añadir variable map como capa a la variable capa IFN Sariñena
+                //añadir variable buscador; añadir a la variable map:
+                  var osmGeocoder= new L.Control.Geocoder({
+                    collapsed: true,
+                    position: 'bottomright',}).addTo(map);
+                    //controles sobre el icono:
+                      document.getElementsByClassName('leaflet-control-geocoder-icon')[0].className += ' fa fa-search';
+                //añadir variables necesarias para control de capas en el visor cartográfico (visualización/selección de capas):
+                  //variable para capas base:
+                    var mapaFin= {};
+                  //variable para control de capas; definir estilo; añadir a la variable map:
+                    var controlFin= L.control.layers(
+                      mapaFin,{'<img src="legend/ifn_sariena_web_1.png"/> <b>Inventario Forestal Nacional:</b><br><i><span style= "font-size: 11px;">Juniperus Oxycedrus<br>Juniperus Thurifera<br>Pinus Halepensis<br>Pinus Pinea<br>Populus Nigra<br>Populus x Canadensis<br>Quercus Ilex<br>Tamarix spp<br>Null = zonas desérticas y de cultivos</span></i>': layer_ifn_sariena_web_1,
+                      "<b>Imagen de Teledetección Sentinel 2</b>": overlay_bounds_sentinel,}, {collapsed: true}).addTo(map);
+                      //a diferencia del visor anterior, en este visor las capas a mostrar en el desplegable de control se han indicado en la misma variable de control
+                      //igualmente, es necesario crear la variable mapaFin para que se muestren las capas en el desplegable de control
+                //añadir variable escala; añadir a la variable map:
+                  var scale= L.control.scale({position: 'bottomleft', imperial: false,}).addTo(map);
+                //añadir variable marcador en unas coordenadas determinadas; añadir a la variable map:
+                  var mark= L.marker([41.8, -0.16]).addTo(map);
+                    mark.bindPopup('Sariñena: lat 41.8 | lon -0.16').addTo(map); //mostrar un popup con info del marcador; añadir a la variable map
+                //añadir fecha y hora de última modificación con estilo definido como estilo CSS de bloque:
+                  document.write('<br><div class= "estilomodific">' + window.document.lastModified)
+              </script> <!--cierra etiqueta script JS-->
+          </p6> <!--cierra etiqueta párrafo 6-->
+        </div> <!--cierra etiqueta bloque interior-->
+    </div> <!--cierra etiqueta bloque-->
+
+  </body> <!--cierra etiqueta que define el contenido principal o cuerpo del doc html-->
+
+
+</html> <!--cierra etiqueta del doc html-->

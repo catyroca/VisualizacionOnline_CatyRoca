@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <!--etiqueta que proporciona metadatos sobre el doc html:-->
+      <meta charset= "utf-8">
+      <meta http-equiv= "X-UA-Compatible" content= "IE=edge">
+      <meta name= "viewport" content= "initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+      <meta name= "mobile-web-app-capable" content= "yes">
+      <meta name= "apple-mobile-web-app-capable" content= "yes">
+    <!--etiquetas para enlazar a códigos CSS y JS de Leaflet:-->
+      <link rel= "stylesheet" href= "css/leaflet.css"> <!--etiqueta para enlazar a código CSS de Leaflet-->
+      <script src= "js/leaflet.js"></script> <!--etiqueta para enlazar a código JS de Leaflet y cierra etiqueta-->
+      <link rel= "stylesheet" href= "css/L.Control.Locate.min.css"> <!--etiqueta para enlazar a código CSS de Leaflet para posicionamiento-->
+      <script src= "js/L.Control.Locate.min.js"></script> <!--etiqueta para enlazar a código JS de Leaflet para posicionamiento-->
+      <link rel= "stylesheet" href= "css/fontawesome-all.min.css"> <!--etiqueta para enlazar a código CSS de Leaflet para apariencia iconos-->
+      <link rel= "stylesheet" href= "css/leaflet-control-geocoder.Geocoder.css"> <!--etiqueta para enlazar a código CSS de Leaflet para buscador-->
+      <script src= "js/leaflet-control-geocoder.Geocoder.js"></script> <!--etiqueta para enlazar a código JS de Leaflet para buscador-->
+      <link rel= "stylesheet" href= "css/leaflet-measure.css"> <!--etiqueta para enlazar a código CSS de Leaflet para medir distancias y áreas-->
+      <script src= "js/leaflet-measure.js"></script> <!--etiqueta para enlazar a código JS de Leaflet para medir distancias y áreas-->
+      <script src= "js/Autolinker.min.js"></script> <!--etiqueta para enlazar a código JS de Leaflet para linkar elementos que aparecerán en el mapa-->
+      <script src= "data/ifn_sariena_web_1.js"></script> <!--etiqueta para enlazar a código JS de Leaflet para capa IFN Sariñena-->
+    <!--estilo aplicado en la cabecera al bloque visor temático:-->
+      <style>
+        html, body, #bloque_visortematico {width: 100%; height: 100%; padding: 0; margin: 0;}
+      </style>
+  </head>
+
+
+  <body>
+    <div id= "bloque_visortematico"></div> <!--bloque donde aparecerá el mapa dentro del cuerpo de la pág y cierra etiqueta-->
+      <script> //script JS de Leaflet que define las características/elementos del bloque_visortematico (mapa); indicar tras el código CSS de Leaflet del bloque:
+        //definir el mapa como una variable; aplicar propiedades; ajustarlo donde se quiera visualizar:
+          var map= L.map('bloque_visortematico',
+            {zoomControl: true, maxZoom: 28, minZoom: 11
+            }).fitBounds([[41.63262819764932, -0.5789140284945308], [41.90281051694051, 0.24208705277350565]]);
+        //indicar líneas de atribución:
+          map.attributionControl.addAttribution('2019 Caty Roca - Inventario Forestal Nacional de Sariñena (Huesca) - Ejercicio Visualización Online - UNIZAR &copy; <a href="https://github.com/tomchadwin/qgis2web">QGis2Web</a>',);
+        //añadir variables capa MDT:
+          var bounds= new L.featureGroup; //variable para límites
+          var img_bounds= [[41.27028300303312, -1.0256579611962087], [42.9884843440343, 0.8979366551604717]]; //variable para imagen límites
+          var img_mdt= 'data/mdt_web_0.png'; //variable para imagen MDT
+          var overlay_bounds_mdt= new L.imageOverlay(img_mdt, img_bounds); //variable para nueva capa superpuesta límites y MDT
+          bounds.addLayer(overlay_bounds_mdt); //añadir variable límites como capa a la variable capa superpuesta límites y MDT
+          map.addLayer(overlay_bounds_mdt); //añadir variable map como capa a la variable capa superpuesta límites y MDT
+        //añadir variable posicionamiento; añadir a la variable map:
+          var position= L.control.locate({position: "bottomright"}).addTo(map);
+        //añadir variable medir distancias y áreas; añadir a la variable map:
+          var measureControl= new L.Control.Measure(
+            {position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'}).addTo(map);
+            //controles sobre el icono:
+              document.getElementsByClassName('leaflet-control-measure-toggle')[0].innerHTML = '';
+              document.getElementsByClassName('leaflet-control-measure-toggle')[0].className += 'fas fa-ruler';
+        //añadir variables y aplicar función a la capa IFN Sariñena para que cuando se sitúe el ratón sobre uno de los polígonos aparezca un popup con info de la tabla de atributos de la capa:
+          var highlightLayer;
+            function highlightFeature(e)
+            {highlightLayer= e.target;
+            if (e.target.feature.geometry.type === 'LineString') {highlightLayer.setStyle({color: '#ffff00',});
+            } else {highlightLayer.setStyle({fillColor: '#ffff00', fillOpacity: 1});
+            } highlightLayer.closePopup();}
+          var pop_ifn_sariena_web_1;
+            function pop_ifn_sariena_web_1(feature, layer)
+            {layer.on({mouseout: function(e)
+            {for (i in e.target._eventParents) {e.target._eventParents[i].resetStyle(e.target);
+            } if (typeof layer.closePopup == 'function') {layer.closePopup();
+            } else {layer.eachLayer(function(feature) {feature.closePopup()});
+            }}, mouseover: highlightFeature,});
+          //añadir variable popup con los atributos de la capa que se quieran mostrar; añadir a la misma variable:
+            var popupIFN= '<table>\
+              \
+              \
+              <tr>\
+              <td colspan= "2"><strong>ha: </strong><br>' + (feature.properties['ha'] !== null ? Autolinker.link(String(feature.properties['HECTAREAS'])) : '') + '</td>\
+              </tr>\
+              \
+              <tr>\
+              <td colspan= "2"><strong><br>Especie: </strong><br>' + (feature.properties['Especie'] !== null ? Autolinker.link(String(feature.properties['ESP1_NESP-NOMBRE1'])) : '') + '</td>\
+              </tr>\
+              </table>';layer.bindPopup(popupIFN);}
+        //añadir variable y definir estilo a la capa IFN Sariñena; crear mapa:
+          var style_ifn_sariena_web_1;
+            function style_ifn_sariena_web_1()
+            {return {pane: 'pane_ifn_sariena_web_1', color: 'rgb(200,25,0)', weight: 0.5, fill: true, fillColor: 'white', fillOpacity: 0.2,}}
+          map.createPane('pane_ifn_sariena_web_1');
+        //añadir variables capas:
+          //variable para nueva capa GeoJson IFN Sariñena:
+            var layer_ifn_sariena_web_1= new L.geoJson(json_ifn_sariena_web_1,
+              {pane: 'pane_ifn_sariena_web_1',
+              onEachFeature: pop_ifn_sariena_web_1,
+              style: style_ifn_sariena_web_1,});
+            bounds.addLayer(layer_ifn_sariena_web_1); //añadir variable límites como capa a la variable capa IFN Sariñena
+            map.addLayer(layer_ifn_sariena_web_1); //añadir variable map como capa a la variable capa IFN Sariñena
+        //añadir variable buscador; añadir a la variable map:
+          var osmGeocoder= new L.Control.Geocoder({
+            collapsed: true,
+            position: 'bottomright',}).addTo(map);
+            //controles sobre el icono:
+              document.getElementsByClassName('leaflet-control-geocoder-icon')[0].className += ' fa fa-search';
+        //añadir variables necesarias para control de capas en el visor cartográfico (visualización/selección de capas):
+          //variable para capas base:
+            var mapaFin= {};
+          //variable para control de capas; añadir a la variable map:
+            var controlFin= L.control.layers(
+              mapaFin,{'<img src="legend/ifn_sariena_web_1.png" /> Inventario Forestal Nacional': layer_ifn_sariena_web_1,
+              "Mapa Digital del Terreno": overlay_bounds_mdt,},{collapsed: true}).addTo(map);
+          //a diferencia del visor anterior, en este visor las capas a mostrar en el desplegable de control se han indicado en la misma variable de control
+          //igualmente, es necesario crear la variable mapaFin para que se muestren las capas en el desplegable de control
+        //añadir variable escala; añadir a la variable map:
+          var scale= L.control.scale({position: 'bottomleft', imperial: false,}).addTo(map);
+      </script> <!--cierra etiqueta script JS-->
+  </body> <!--cierra etiqueta que define el contenido principal o cuerpo del doc html-->
+
+</html> <!--cierra etiqueta del doc html-->
